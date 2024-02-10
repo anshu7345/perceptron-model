@@ -50,6 +50,7 @@ def main():
         decision = perceptron.predict(inputs)
         result = 'Buy' if decision == 1 else 'Not buy'
         st.write(f'Decision: {result}')
+        
 
 if __name__ == '__main__':
     main()
