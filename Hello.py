@@ -48,10 +48,11 @@ def main():
 
     inputs = [1 if val == 'Yes' else 0 for val in (earnings, trend, industry, news, recommendations)]
 
-    if st.button('Make Decision'): 
-        decision = perceptron.predict(inputs)
+    if st.button('Make Decision'):
+        weighted_sum, decision = perceptron.predict(inputs)
         result = 'Buy' if decision == 1 else 'Not buy'
         st.write(f'Decision: {result}')
-
+        st.write(f'Threshold Score: {weighted_sum:.2f}')
+        
 if __name__ == '__main__':
     main()
