@@ -18,7 +18,6 @@ from streamlit.logger import get_logger
 LOGGER = get_logger(__name__)
 
 import streamlit as st
-import streamlit as st
 
 class Perceptron:
     def __init__(self, weights, threshold):
@@ -27,7 +26,7 @@ class Perceptron:
 
     def predict(self, inputs):
         weighted_sum = sum(w * x for w, x in zip(self.weights, inputs))
-        return 1 if weighted_sum >= self.threshold else 0
+        return weighted_sum, 1 if weighted_sum >= self.threshold else 0
 
 weights = [0.7, 0.4, 0.6, 0.5, 0.3]
 threshold = 1.8
@@ -36,8 +35,8 @@ perceptron = Perceptron(weights, threshold)
 def main():
     st.title('Stock Investment Decision Maker')
     
-    # Add image
-    st.image('Stock-Market_BG.jpg', caption='Stock Market',width=500)
+    # Add image with adjusted width
+    st.image('stock_image.jpg', caption='Stock Market', width=500)
 
     st.write('Enter Criteria for Stock Investment Decision:')
     earnings = st.radio('Positive Earnings Report from the Company?', ('No', 'Yes'))
@@ -53,6 +52,7 @@ def main():
         result = 'Buy' if decision == 1 else 'Not buy'
         st.write(f'Decision: {result}')
         st.write(f'Threshold Score: {weighted_sum:.2f}')
-        
+
 if __name__ == '__main__':
     main()
+
