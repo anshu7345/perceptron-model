@@ -17,35 +17,38 @@ from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
+import streamlit as st
 
-def run():
-    st.set_page_config(
-        page_title="Hello",
-        page_icon="👋",
-    )
+class Perceptron:
+    def __init__(self, weights, threshold):
+        self.weights = weights
+        self.threshold = threshold
 
-    st.write("# Welcome to Streamlit! 👋")
+    def predict(self, inputs):
+        weighted_sum = sum(w * x for w, x in zip(self.weights, inputs))
+        return 1 if weighted_sum >= self.threshold else 0
 
-    st.sidebar.success("Select a demo above.")
+weights = [0.7, 0.4, 0.6, 0.5, 0.3]
+threshold = 1.8
+perceptron = Perceptron(weights, threshold)
 
-    st.markdown(
-        """
-        Streamlit is an open-source app framework built specifically for
-        Machine Learning and Data Science projects.
-        **👈 Select a demo from the sidebar** to see some examples
-        of what Streamlit can do!
-        ### Want to learn more?
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into our [documentation](https://docs.streamlit.io)
-        - Ask a question in our [community
-          forums](https://discuss.streamlit.io)
-        ### See more complex demos
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset](https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-    """
-    )
+def main():
+    st.title('Stock Investment Decision Maker')
 
+    st.write('Enter Criteria for Stock Investment Decision:')
+    earnings = st.slider('Positive Earnings Report from the Company (0 or 1)', 0, 1)
+    trend = st.slider('Upward Market Trend (0 or 1)', 0, 1)
+    industry = st.slider('Company is in a Growing Industry (0 or 1)', 0, 1)
+    news = st.slider('Positive Recent News about the Company (0 or 1)', 0, 1)
+    recommendations = st.slider('The stock is Recommended by Analysts (0 or 1)', 0, 1)
 
-if __name__ == "__main__":
-    run()
+    inputs = [earnings, trend, industry, news, recommendations]
+
+    if st.button('Make Decision'):
+        decision = perceptron.predict(inputs)
+        result = 'Buy' if decision == 1 else 'Not buy'
+        st.write(f'Decision: {result}')
+
+if __name__ == '__main__':
+    main()
+
