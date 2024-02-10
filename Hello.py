@@ -37,7 +37,7 @@ def main():
     st.title('Stock Investment Decision Maker')
     
     # Add image
-    st.image('Stock-Market_BG.jpg', caption='Stock Market', use_column_width=True)
+    st.image('Stock-Market_BG.jpg', caption='Stock Market',width=500)
 
     st.write('Enter Criteria for Stock Investment Decision:')
     earnings = st.radio('Positive Earnings Report from the Company?', ('No', 'Yes'))
