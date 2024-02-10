@@ -19,6 +19,8 @@ LOGGER = get_logger(__name__)
 
 import streamlit as st
 
+import streamlit as st
+
 class Perceptron:
     def __init__(self, weights, threshold):
         self.weights = weights
@@ -36,13 +38,13 @@ def main():
     st.title('Stock Investment Decision Maker')
 
     st.write('Enter Criteria for Stock Investment Decision:')
-    earnings = st.radio('Positive Earnings Report from the Company (0 or 1)', [0, 1])
-    trend = st.radio('Upward Market Trend (0 or 1)', [0, 1])
-    industry = st.radio('Company is in a Growing Industry (0 or 1)', [0, 1])
-    news = st.radio('Positive Recent News about the Company (0 or 1)', [0, 1])
-    recommendations = st.radio('The stock is Recommended by Analysts (0 or 1)', [0, 1])
+    earnings = st.radio('Positive Earnings Report from the Company?', ('No', 'Yes'))
+    trend = st.radio('Upward Market Trend?', ('No', 'Yes'))
+    industry = st.radio('Company is in a Growing Industry?', ('No', 'Yes'))
+    news = st.radio('Positive Recent News about the Company?', ('No', 'Yes'))
+    recommendations = st.radio('The stock is Recommended by Analysts?', ('No', 'Yes'))
 
-    inputs = [earnings, trend, industry, news, recommendations]
+    inputs = [1 if val == 'Yes' else 0 for val in (earnings, trend, industry, news, recommendations)]
 
     if st.button('Make Decision'):
         decision = perceptron.predict(inputs)
