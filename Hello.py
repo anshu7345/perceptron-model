@@ -34,7 +34,6 @@ perceptron = Perceptron(weights, threshold)
 
 def main():
     st.title('Stock Investment Decision Maker')
-    
     # Add image with adjusted width
     st.image('stock_image.jpg', caption='Stock Market', width=500)
 
