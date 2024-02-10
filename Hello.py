@@ -36,11 +36,11 @@ def main():
     st.title('Stock Investment Decision Maker')
 
     st.write('Enter Criteria for Stock Investment Decision:')
-    earnings = st.slider('Positive Earnings Report from the Company (0 or 1)', 0, 1)
-    trend = st.slider('Upward Market Trend (0 or 1)', 0, 1)
-    industry = st.slider('Company is in a Growing Industry (0 or 1)', 0, 1)
-    news = st.slider('Positive Recent News about the Company (0 or 1)', 0, 1)
-    recommendations = st.slider('The stock is Recommended by Analysts (0 or 1)', 0, 1)
+    earnings = st.radio('Positive Earnings Report from the Company (0 or 1)', [0, 1])
+    trend = st.radio('Upward Market Trend (0 or 1)', [0, 1])
+    industry = st.radio('Company is in a Growing Industry (0 or 1)', [0, 1])
+    news = st.radio('Positive Recent News about the Company (0 or 1)', [0, 1])
+    recommendations = st.radio('The stock is Recommended by Analysts (0 or 1)', [0, 1])
 
     inputs = [earnings, trend, industry, news, recommendations]
 
