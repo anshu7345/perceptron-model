@@ -35,7 +35,7 @@ perceptron = Perceptron(weights, threshold)
 def main():
     st.title('Stock Investment Decision Maker')
     # Add image with adjusted width
-    #st.image('stock_image.jpg', caption='Stock Market', width=500)
+    st.image('Stock-Market_BG.jpg', caption='Stock Market', width=500)
 
     st.write('Enter Criteria for Stock Investment Decision:')
     earnings = st.radio('Positive Earnings Report from the Company?', ('No', 'Yes'))
